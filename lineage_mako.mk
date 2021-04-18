@@ -6,7 +6,9 @@ TARGET_SCREEN_WIDTH := 768
 $(call inherit-product, vendor/lineage/config/common_mini_phone.mk)
 
 # Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+# $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+# Only build halium bits
+$(call inherit-product, $(SRC_TARGET_DIR)/product/halium.mk)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/lge/mako/device.mk)
