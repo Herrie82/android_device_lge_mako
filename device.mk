@@ -69,8 +69,8 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-service \
     libbt-vendor
 
-PRODUCT_PACKAGES += \
-    bdAddrLoader
+#PRODUCT_PACKAGES += \
+#    bdAddrLoader
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -167,9 +167,9 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl-bcm \
     android.hardware.nfc@1.0-service \
-    nfc_nci.bcm2079x.default \
-    NfcNci \
-    Tag
+    nfc_nci.bcm2079x.default
+#    NfcNci \
+#    Tag
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf
@@ -227,8 +227,8 @@ PRODUCT_PACKAGES += \
     ueventd.mako.rc
 
 # Recorder
-PRODUCT_PACKAGES += \
-    Recorder
+# PRODUCT_PACKAGES += \
+#    Recorder
 
 # Releasetools
 PRODUCT_COPY_FILES += \
