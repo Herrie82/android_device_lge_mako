@@ -29,4 +29,31 @@ LOCAL_PATH := $(call my-dir)
 
 include $(call first-makefiles-under,$(LOCAL_PATH))
 
+include $(CLEAR_VARS)
+
+#A/B builds require us to create the mount points at compile time.
+#Just creating it for all cases since it does not hurt.
+FIRMWARE_MOUNT_POINT := $(PRODUCT_OUT)/firmware
+PERSIST_MOUNT_POINT := $(PRODUCT_OUT)/persist
+
+$(FIRMWARE_MOUNT_POINT):
+	@echo "Creating $(FIRMWARE_MOUNT_POINT)"
+	@mkdir -p $(FIRMWARE_MOUNT_POINT)
+
+$(PERSIST_MOUNT_POINT):
+	@echo "Creating $(PERSIST_MOUNT_POINT)"
+	@mkdir -p $(PERSIST_MOUNT_POINT)
+
+# halium doesn't support 32-bit builds by default, so the patches sometime point directly to /system/lib64
+# Make lib64 -> lib symlink to cover this situation easily
+LIB64_SYMLINK := $(PRODUCT_OUT)/system/lib64
+$(LIB64_SYMLINK):
+	@echo "lib64 to lib symlink: $@"
+	@mkdir -p $(PRODUCT_OUT)/system/lib
+	$(hide) ln -sf lib $(LIB64_SYMLINK)
+
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) \
+								 $(PERSIST_MOUNT_POINT)  \
+								 $(LIB64_SYMLINK)
+
 endif
