@@ -18,6 +18,11 @@
 # Inherit from vendor
 -include vendor/lge/mako/BoardConfigVendor.mk
 
+# Halium requires BOARD_BUILD_SYSTEM_ROOT_IMAGE for non-Treble devices
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+
+BOARD_ROOT_EXTRA_FOLDERS += firmware persist
+
 # Platform Path
 PLATFORM_PATH := device/lge/mako
 
