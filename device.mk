@@ -259,6 +259,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
+    vibrator.mako \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
